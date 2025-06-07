@@ -325,36 +325,17 @@ exports.addChallengeService = async (user) => {
       return { error: new Error("Error: Admin cannot take test") };
     }
 
-    // // ONLY AVAILABLE ON WEEKENDS
     // const today = new Date();
     // const currentDay = today.getDay(); // Sunday = 0, Monday = 1, ..., Saturday = 6
-    // const currentHour = today.getHours();
 
-    // // Restriction: Only allow challenges from Friday 12AM to Sunday 12AM
-    // if (
-    //   currentDay < 5 || // Before Friday
-    //   (currentDay === 5 && currentHour < 0) || // Before Friday 12AM
-    //   (currentDay === 6 && currentHour >= 24) || // After Saturday 11:59PM
-    //   currentDay > 6 // After Sunday
-    // ) {
+    // // Restriction: Only allow challenges from Friday to Sunday
+    // if (currentDay !== 5 && currentDay !== 6 && currentDay !== 0) {
     //   return {
     //     error: new Error(
-    //       "Challenge mode is only available from Fridays 12AM to Sundays 11:59PM"
+    //       "Challenge mode is only available from Fridays to Sundays"
     //     ),
     //   };
     // }
-
-    const today = new Date();
-    const currentDay = today.getDay(); // Sunday = 0, Monday = 1, ..., Saturday = 6
-    
-    // Restriction: Only allow challenges from Friday to Sunday
-    if (currentDay !== 5 && currentDay !== 6 && currentDay !== 0) {
-      return {
-        error: new Error(
-          "Challenge mode is only available from Fridays to Sundays"
-        ),
-      };
-    }
 
     const name = `${getUser.firstName} ${getUser.lastName}`;
 

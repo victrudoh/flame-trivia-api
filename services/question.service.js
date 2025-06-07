@@ -7,7 +7,7 @@ exports.allQuestionsService = async (id) => {
   try {
     const questions = await questionModel.find({ levelId: id });
     if (!questions) {
-      return { error: new Error("Error: Questions not found") };
+      return { error: new Error("Error: Questions not found.") };
     }
 
     // **** This is a fix for when all levels were deleted, don't touch **** //
