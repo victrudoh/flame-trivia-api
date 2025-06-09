@@ -325,7 +325,7 @@ exports.addChallengeService = async (user) => {
       return { error: new Error("Error: Admin cannot take test") };
     }
 
-    // const today = new Date();
+    const today = new Date();
     // const currentDay = today.getDay(); // Sunday = 0, Monday = 1, ..., Saturday = 6
 
     // // Restriction: Only allow challenges from Friday to Sunday
